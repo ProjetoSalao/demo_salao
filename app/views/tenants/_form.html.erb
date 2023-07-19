@@ -1,0 +1,44 @@
+<%= form_with(model: tenant) do |form| %>
+  <% if tenant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tenant.errors.count, "error") %> prohibited this tenant from being saved:</h2>
+
+      <ul>
+      <% tenant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.label :subdomain, class: 'form-label' %>
+      <%= form.text_field :subdomain, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.label :domain, class: 'form-label' %>
+      <%= form.text_field :domain, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <% if tenant.persisted? %>
+      <div class="float-end">
+        <%= link_to 'Destroy', tenant, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if tenant.persisted? %>
+      <%= link_to "Cancel", tenant, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", tenants_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>
