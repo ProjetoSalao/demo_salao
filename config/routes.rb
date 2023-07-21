@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :shops
   resources :tenants
   draw :madmin
   get '/privacy', to: 'home#privacy'

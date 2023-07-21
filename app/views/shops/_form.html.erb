@@ -1,0 +1,44 @@
+<%= form_with(model: shop) do |form| %>
+  <% if shop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+
+      <ul>
+      <% shop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.label :city, class: 'form-label' %>
+      <%= form.text_field :city, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.label :tenant_id, class: 'form-label' %>
+      <%= form.text_field :tenant_id, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <% if shop.persisted? %>
+      <div class="float-end">
+        <%= link_to 'Destroy', shop, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if shop.persisted? %>
+      <%= link_to "Cancel", shop, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", shops_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

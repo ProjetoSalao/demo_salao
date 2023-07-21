@@ -1,0 +1,18 @@
+<div class="page-header">
+  <%= link_to shops_path, class: 'btn btn-default' do %>
+    All Shops
+  <% end %>
+  <%= link_to edit_shop_path(@shop), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show shop</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @shop.name %></dd>
+  <dt>City:</dt>
+  <dd><%= @shop.city %></dd>
+  <dt>Tenant:</dt>
+  <dd><%= @shop.tenant %></dd>
+</dl>
