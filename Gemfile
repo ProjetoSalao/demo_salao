@@ -88,3 +88,4 @@ gem "whenever", require: false
 gem "responders", github: "heartcombo/responders", branch: "main"
 
 gem "acts_as_tenant", "~> 0.6.1"
+gem "rolify"

@@ -1,8 +1,10 @@
 class TenantsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_tenant, only: %i[ show edit update destroy ]
 
   # GET /tenants or /tenants.json
   def index
+    authorize :tenant, :index?
     @tenants = Tenant.all
   end
 
