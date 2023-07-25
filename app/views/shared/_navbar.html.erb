@@ -33,9 +33,19 @@
             <% end %>
             <div id="nav-account-dropdown" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbar-dropdown">
               <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
+              
               <% if (current_user.has_role? :superadmin) && respond_to?(:madmin_root_path) %>
                 <div class="dropdown-divider"></div>
+                <%= link_to "Sign Up", new_user_registration_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
                 <%= link_to "Admin Area", madmin_root_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Tenants",tenants_path, class: "dropdown-item" %>              
+              <% end %>
+              
+              <% if (current_user.has_role? :admin) %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Shops",shops_path, class: "dropdown-item" %>              
               <% end %>
               <div class="dropdown-divider"></div>
               <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -43,7 +53,6 @@
           </li>
 
         <% else %>
-          <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
         <% end %>
       </ul>
