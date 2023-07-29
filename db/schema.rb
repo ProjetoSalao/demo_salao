@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_24_212622) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_29_021128) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_212622) do
     t.datetime "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "value"
+    t.bigint "tenant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tenant_id"], name: "index_products_on_tenant_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -143,6 +152,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_212622) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "products", "tenants"
   add_foreign_key "services", "users"
   add_foreign_key "shops", "tenants"
   add_foreign_key "users", "tenants"

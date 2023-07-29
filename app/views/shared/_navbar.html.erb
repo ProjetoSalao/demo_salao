@@ -45,7 +45,10 @@
               
               <% if (current_user.has_role? :admin) %>
                 <div class="dropdown-divider"></div>
-                <%= link_to "Shops",shops_path, class: "dropdown-item" %>              
+                <%= link_to "Shops",shops_path, class: "dropdown-item" %>     
+                <div class="dropdown-divider"></div>
+                <%= link_to "Products",products_path, class: "dropdown-item" %>     
+                         
               <% end %>
               <div class="dropdown-divider"></div>
               <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
