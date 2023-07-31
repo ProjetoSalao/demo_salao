@@ -1,0 +1,44 @@
+<%= form_with(model: task) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.label :value, class: 'form-label' %>
+      <%= form.text_field :value, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <%= form.label :duration, class: 'form-label' %>
+      <%= form.number_field :duration, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <% if task.persisted? %>
+      <div class="float-end">
+        <%= link_to 'Destroy', task, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if task.persisted? %>
+      <%= link_to "Cancel", task, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", tasks_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>
