@@ -1,10 +1,10 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  root to: 'home#index'
   
   #get 'users', action: :index, controller: 'users'  
   #get 'user/:id', action: :show, controller: 'users'
-  resources :users, only: [:index]
 
 
   resources :tasks
@@ -27,9 +27,9 @@ end
 
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations' }, :path_prefix => 'my'
+  resources :users, only: [:index]
  
-  root to: 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
