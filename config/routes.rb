@@ -1,6 +1,12 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  
+  #get 'users', action: :index, controller: 'users'  
+  #get 'user/:id', action: :show, controller: 'users'
+  resources :users, only: [:index]
+
+
   resources :tasks
   resources :products
   resources :shops
@@ -8,7 +14,7 @@ Rails.application.routes.draw do
   draw :madmin
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
-authenticate :user, lambda { |u| u.admin? } do
+authenticate :user, lambda { |u| u.has_role? :superadmin } do
   mount Sidekiq::Web => '/sidekiq'
 
   namespace :madmin do
