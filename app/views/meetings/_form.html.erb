@@ -21,6 +21,11 @@
       <%= form.datetime_field :start_time, class: 'form-control' %>
     </div>
 
+    <div class="mb-3">
+    <%= form.label :start_time, class: 'form-label' %>
+    <%= form.select :user_id, User.all.collect { |user| [user.first_name, user.id] } %>
+    </div>
+
   <div class="mb-3">
     <% if meeting.persisted? %>
       <div class="float-end">

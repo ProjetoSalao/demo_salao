@@ -125,6 +125,8 @@ GEM
       activerecord (>= 4.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    groupdate (6.3.0)
+      activesupport (>= 6.1)
     hashie (5.0.0)
     http (5.1.1)
       addressable (~> 2.8)
@@ -340,6 +342,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   friendly_id (~> 5.4)
+  groupdate
   importmap-rails
   jbuilder
   jsbundling-rails
