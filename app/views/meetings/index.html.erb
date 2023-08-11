@@ -5,17 +5,9 @@
   <div class="col-sm-6">
     <h1>Meetings</h1>
 
-    <%= render SimpleCalendar::BusinessWeekCalendar.new(self, {}) do |date| %>
+    <%= render SimpleCalendar::BusinessWeekCalendar.new(self, {events: @meetings, bookings: @bookings}) do |date| %>
       <%= date %>
     <% end %>
-  
-
-    
-    <%= custom_calendar(number_of_days: 1) do |date| %>
-      <%= date %>
-
-    <% end %>
-    
 
   </div>
 

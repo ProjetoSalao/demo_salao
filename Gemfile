@@ -91,3 +91,5 @@ gem "acts_as_tenant", "~> 0.6.1"
 gem "rolify"
 gem "simple_calendar"
 gem "groupdate"
+
+gem "tailwindcss-rails", "~> 2.0"

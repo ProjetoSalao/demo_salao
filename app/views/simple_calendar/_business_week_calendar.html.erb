@@ -10,20 +10,31 @@
   </div>
 
   <table class="table table-striped">
+    
+    
     <thead>
       <tr>
-        <% date_range.slice(0, 7).each do |day| %>
           <th>Time</th>
-        <% end %>
+          <th>Reinaldo</th>
+          <th>Eduardo</th>        
       </tr>
     </thead>
 
     <tbody>
-    <% (1..24).each do |h|%>
+    <% @bookings.each do |book| %>
       <tr>
-        <td>  <label><%= h%></label> </td>
+      <% book.each do |hour, data| %>
+          <td><label> <%= hour %> </label></td>
+          <% if  data.nil? == false %>
+           <% data.each do |tt| %>
+           <td><label> <%=  tt.user_id%> </label></td>
+           <%end%>
+         <%end%> 
+      
+      <% end %>
       </tr>
     <% end %>
+
      
     </tbody>
   </table>
