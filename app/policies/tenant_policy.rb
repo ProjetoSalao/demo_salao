@@ -8,7 +8,5 @@ class TenantPolicy < ApplicationPolicy
   end
 
 
-  def index?
-    @user.has_role? :superadmin
-  end
+
 end

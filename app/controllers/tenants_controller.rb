@@ -4,7 +4,6 @@ class TenantsController < ApplicationController
 
   # GET /tenants or /tenants.json
   def index
-    authorize :tenant, :index?
     @tenants = Tenant.all
   end
 
