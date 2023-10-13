@@ -20,7 +20,7 @@
       <div class="mb-3">
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm Password' %>
       </div>
-      <% if(current_user.has_role? :superadmin) %>
+      <% if(admin_signed_in?) %>
       <div class="mb-3 form-control">
         
         <%= f.select :tenant_id, Tenant.all.collect { |user| [user.name, user.id] } %>

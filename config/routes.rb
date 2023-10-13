@@ -1,6 +1,6 @@
 require 'sidekiq/web'
 
-Rails.application.routes.draw do
+Rails.application.routes.draw do  
   resources :meetings
   root to: 'home#index'
   
@@ -28,6 +28,7 @@ end
 
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
+  devise_for :admins, :path_prefix => 'admin'
   devise_for :users, controllers: { registrations: 'users/registrations' }, :path_prefix => 'my'
   resources :users, only: [:index]
  

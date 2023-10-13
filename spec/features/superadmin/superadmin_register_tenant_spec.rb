@@ -2,12 +2,11 @@ require 'rails_helper'
 
 feature 'Superadmin register tenant' do
   scenario 'successfully' do
-    tenant = Tenant.create(id: 99, name: 'Reinaldo', subdomain: 'reinaldo')
-
-    user = User.create({
+    
+    user = Admin.create({
       email: FFaker::Internet.email, 
       password: Devise.friendly_token.first(8),
-      tenant: tenant 
+      
     })
 
 		login_as user
