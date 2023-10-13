@@ -36,7 +36,7 @@
 
                       <td><%= tenant.subdomain %></td>
                       <td><%= tenant.domain %></td>
-          
+                      <td> <%= link_to 'Usuários', tenant_users_path(tenant.id) %> </td>
           
         <% end %>
       <% end %>

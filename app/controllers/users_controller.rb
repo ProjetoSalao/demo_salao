@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
-    @users = User.all
+    @users = User.where(tenant_id: params[:tenant_id])
   end
 
   def show

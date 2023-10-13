@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :tasks
   resources :products
   resources :shops
-  resources :tenants
+  resources :tenants do
+    resources :users
+  end
   draw :madmin
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
