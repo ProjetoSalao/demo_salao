@@ -18,7 +18,7 @@ feature 'Superadmin register user' do
     fill_in 'Email Address', with: 'any@email.com'
     fill_in 'Password', with: 'anypassword'
     fill_in 'Confirm Password', with: 'anypassword'
-    click_on 'Sign Up'
+    click_on 'Create'
 
     puts page
     #expect(page).to have_css('h1', text: 'any@email.com')

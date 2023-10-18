@@ -21,31 +21,21 @@
         <li class="nav-item"><%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %></li>
         
         <%if admin_signed_in? %>
-          <div class="nav-item dropdown">
-            <div class=" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Admin
-            </div>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li class="nav-item dropdown">
-                <%= link_to "Sign Up", new_user_registration_path, class: "dropdown-item" %>
-                <div class="dropdown-divider"></div>
+            <%= link_to "#", id: "navbar-dropdown", class: "nav-link dropdown-toggle", data: { target: "nav-account-dropdown", bs_toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>
+              <%= image_tag avatar_path(current_user, size: 40), height: 20, width: 20, class: "rounded" %>
+            <% end %>
+            <div id="nav-account-dropdown" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbar-dropdown">
                 <%= link_to "Admin Area", madmin_root_path, class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
-                <%= link_to "Tenants",tenants_path, class: "dropdown-item" %>   
-                <div class="dropdown-divider"></div>
+                <%= link_to "Tenants",tenants_path, class: "dropdown-item" %>                 
+              <div class="dropdown-divider"></div>
                 <%= button_to "Logout", destroy_admin_session_path, method: :delete, class: "dropdown-item" %>          
-            </li>
-            </ul>
-          </div>
+            </div>
+          </li>
 
-
-
-        <%else %>
-          <li class="nav-item"><%= link_to "Admin Area", new_admin_session_path, class: "nav-link" %></li>
-
-        <% end %>
-        
-        <% if user_signed_in? %>
+          
+        <% elsif user_signed_in? %>
 
           <li class="nav-item">
             <%= link_to notifications_path, class: "nav-link" do %>
@@ -60,17 +50,7 @@
             <div id="nav-account-dropdown" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbar-dropdown">
               <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
               
-              <% if (admin_signed_in?) && respond_to?(:madmin_root_path) %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Sign Up", new_user_registration_path, class: "dropdown-item" %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Admin Area", madmin_root_path, class: "dropdown-item" %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Tenants",tenants_path, class: "dropdown-item" %>  
-                <div class="dropdown-divider"></div>
-                <%= link_to "Tenants",tenants_path, class: "dropdown-item" %>              
-              <% end %>
-              
+
               <% if (current_user.has_role? :admin) %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "Shops",shops_path, class: "dropdown-item" %>     
@@ -85,6 +65,7 @@
           </li>
 
         <% else %>
+          <li class="nav-item"><%= link_to "Admin Area", new_admin_session_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
         <% end %>
       </ul>
