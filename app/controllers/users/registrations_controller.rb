@@ -5,12 +5,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   skip_before_action :require_no_authentication, only: [:new, :create, :cancel]
 
-  # def create
-  #   User.create!({:email => params[:email], :roles => [''], :password => params[:password], :password_confirmation => params[:password_confirmation] })
-  # end
+  #def create
+  #  User.create!({:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation], :tenant_id => params[:tenant_id]})
+  #end
 
-  # def sign_up(resource_name, resource)
-  # end
+   def sign_up(resource_name, resource)
+   end
 
   # GET /resource/edit
   # def edit
@@ -49,9 +49,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    tenant_path(resource.tenant_id)
+    #super(resource.)
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
