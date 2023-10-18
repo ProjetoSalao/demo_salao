@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do  
+  resources :user_roles
   resources :meetings
   root to: 'home#index'
   
