@@ -26,7 +26,10 @@
         <%= f.select :tenant_id, Tenant.all.collect { |user| [user.name, user.id] } %>
       </div>
       <% end %>
-
+      <div class="mb-3 form-control">
+        
+        <%= f.select :user_role_id, UserRole.all.collect { |role| [role.name, role.id] } %>
+      </div>
       <div class="mb-3 d-grid">
         <%= f.submit "Create", class: "btn btn-primary btn-lg" %>
       </div>

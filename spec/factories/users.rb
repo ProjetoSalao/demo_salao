@@ -3,6 +3,7 @@ FactoryBot.define do
     email {FFaker::Internet.email }
     password {Devise.friendly_token.first(8)}
     tenant_id = 1
+    user_role_id = 1
     admin { true }
   end
 end

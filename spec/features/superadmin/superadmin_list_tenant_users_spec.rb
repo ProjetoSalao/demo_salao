@@ -8,9 +8,11 @@ feature 'Superadmin list tenant_users' do
       password: Devise.friendly_token.first(8),
       
     })
+    role = UserRole.create(name: 'Admin', canCreateShop: true)
     user = User.create({
       email: FFaker::Internet.email, 
       password: Devise.friendly_token.first(8),
+      user_role_id: role.id
     })
 
 		login_as admin

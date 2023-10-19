@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :user_role do
-    name { "MyString" }
-    tenant { nil }
-    canCreateShop { false }
+    id = 1
+    name =  'Admin'
+    tenant_id =  1
+    canCreateShop = true
   end
 end
