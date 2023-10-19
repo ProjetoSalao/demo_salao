@@ -8,7 +8,6 @@ feature 'Superadmin register user' do
       password: Devise.friendly_token.first(8),
       
     })
-		tenant = Tenant.create(name: 'TesteTenant')
 
 		login_as admin
     visit tenants_path
@@ -20,9 +19,7 @@ feature 'Superadmin register user' do
     fill_in 'Confirm Password', with: 'anypassword'
     click_on 'Create'
 
-    puts page
-    #expect(page).to have_css('h1', text: 'any@email.com')
-    expect(page).to have_content(tenant.name)
+    expect(page).to have_content('TestTenant')
   end
 
 

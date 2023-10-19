@@ -19,11 +19,8 @@
       <tr>
     
         <th>Name</th>
-    
-
-            <th>Subdomain</th>
-            <th>Domain</th>
-            
+        <th>Subdomain</th>
+        <th>Domain</th>    
       </tr>
     </thead>
 
@@ -32,12 +29,9 @@
         <%= content_tag :tr, id: dom_id(tenant), class: dom_class(tenant) do %>
           
             <td><%= link_to tenant.name, tenant %></td>
-          
-
                       <td><%= tenant.subdomain %></td>
                       <td><%= tenant.domain %></td>
                       <td> <%= link_to 'Usuários', tenant_users_path(tenant.id) %> </td>
-          
         <% end %>
       <% end %>
     </tbody>

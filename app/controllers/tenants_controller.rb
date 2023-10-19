@@ -24,6 +24,9 @@ class TenantsController < ApplicationController
   def create
     @tenant = Tenant.new(tenant_params)
 
+    # Create default resources for the tenant
+    UserRole.new(name: 'Admin', canCreateShop: true)
+
     respond_to do |format|
       if @tenant.save
         format.html { redirect_to tenant_url(@tenant), notice: "Tenant was successfully created." }
