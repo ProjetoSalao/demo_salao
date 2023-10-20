@@ -22,6 +22,11 @@ class UserRolesController < ApplicationController
 
   # POST /user_roles or /user_roles.json
   def create
+    role = UserRole.find(current_user.user_role_id)
+    unless role.canCreateRole?
+      return redirect_to shops_url, flash: { 'message': 'Not authorized' }
+    end
+    
     @user_role = UserRole.new(user_role_params)
 
     respond_to do |format|

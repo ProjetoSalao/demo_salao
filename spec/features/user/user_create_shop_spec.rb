@@ -19,7 +19,7 @@ feature 'User create shop' do
   end
 
 	scenario 'without permission' do
-    role = UserRole.create(name: 'Admin', canCreateShop: false)
+    role = UserRole.create(name: 'Admin', canCreateShop: false, canCreateRole: false)
     user = User.create({
       email: FFaker::Internet.email, 
       password: Devise.friendly_token.first(8),
