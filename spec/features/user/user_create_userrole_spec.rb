@@ -10,7 +10,7 @@ feature 'User register user role' do
       user_role_id: role.id
     })
 		
-		login_as user
+		login_as user, scope: :user
     visit new_user_role_path
     fill_in 'Name', with: 'AdminRole'
     check 'user_role_canCreateShop'

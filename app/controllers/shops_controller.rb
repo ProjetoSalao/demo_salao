@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_shop, only: %i[ show edit update destroy ]
 
   # GET /shops or /shops.json
@@ -21,6 +22,11 @@ class ShopsController < ApplicationController
 
   # POST /shops or /shops.json
   def create
+    role = UserRole.find(current_user.user_role_id)
+    unless role.canCreateShop?
+      return redirect_to shops_url, flash: { 'message': 'Not authorized' }
+    end
+    
     @shop = Shop.new(shop_params)
 
     respond_to do |format|
