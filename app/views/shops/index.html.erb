@@ -17,27 +17,16 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-    
         <th>Name</th>
-    
-
-            <th>City</th>
-            <th>Tenant</th>
-            
+        <th>City</th>
       </tr>
     </thead>
 
     <tbody>
       <% @shops.each do |shop| %>
         <%= content_tag :tr, id: dom_id(shop), class: dom_class(shop) do %>
-          
             <td><%= link_to shop.name, shop %></td>
-          
-
-                      <td><%= shop.city %></td>
-                      <td><%= shop.tenant %></td>
-          
-          
+            <td><%= shop.city %></td>
         <% end %>
       <% end %>
     </tbody>

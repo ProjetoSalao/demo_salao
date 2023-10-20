@@ -22,11 +22,6 @@
     </div>
 
   <div class="mb-3">
-    <%= form.label :tenant_id, class: 'form-label' %>
-      <%= form.text_field :tenant_id, class: 'form-control' %>
-    </div>
-
-  <div class="mb-3">
     <% if shop.persisted? %>
       <div class="float-end">
         <%= link_to 'Destroy', shop, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
